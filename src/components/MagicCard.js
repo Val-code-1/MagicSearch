@@ -6,7 +6,7 @@ import {
   CardMedia,
   Collapse,
 } from "@material-ui/core";
-import SymbolReplace from "../utilities/SymbolReplace";
+import SymbolReplace from "../WTF/SymbolReplace";
 
 const MagicCard = ({ cardData }) => {
   const [hinge, setHinge] = useState(false);
