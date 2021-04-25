@@ -6,7 +6,7 @@ import {
   CardMedia,
   Collapse,
 } from "@material-ui/core";
-import symbolReplace from "../utilities/symbolReplace";
+import SymbolReplace from "../utilities/SymbolReplace";
 
 const MagicCard = ({ cardData }) => {
   const [hinge, setHinge] = useState(false);
@@ -20,16 +20,16 @@ const MagicCard = ({ cardData }) => {
   } = cardData;
   // console.log(cardData);
   return (
-    <Card>
+    <Card key={id}>
       <CardContent>
-        <div key={id}>
+        <div>
           <Button onClick={() => setHinge(!hinge)}>
             Press to View {name}
           </Button>
           <Collapse in={hinge}>
             <img src={imageUrl} />
           </Collapse>
-          <p>{symbolReplace(manaCost)}</p>
+          <p>{SymbolReplace(manaCost)}</p>
           <p>{type}</p>
           <p>{set}</p>
         </div>
