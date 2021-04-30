@@ -1,27 +1,24 @@
-import React, { useState, useEffect } from 'react';
-import MagicCard from './MagicCard';
+import React, { useState, useEffect } from "react";
+import MagicCard from "./MagicCard";
 
 const Cards = ({ name, searchQuery }) => {
   const [cards, setCards] = useState();
 
   useEffect(() => {
     fetch(`https://api.magicthegathering.io/v1/cards?name=${searchQuery}`)
-      .then(resp => resp.json())
-      .then(data => {
+      .then((resp) => resp.json())
+      .then((data) => {
         setCards(data);
       });
   }, [searchQuery]);
 
-console.log(cards)
+  console.log(cards);
   if (cards) {
     return (
       <div>
         {name ? (
-          cards.cards.map(card => {
-            
-            return (
-              <MagicCard cardData={card} />
-            );
+          cards.cards.map((card) => {
+            return <MagicCard cardData={card} />;
           })
         ) : (
           <h1>Too bad, pal.</h1>
