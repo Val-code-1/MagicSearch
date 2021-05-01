@@ -1,19 +1,46 @@
-import React, { useState, useEffect } from 'react';
-import Cards from './components/Cards';
+import React, { useState, useEffect } from "react";
+import Cards from "./components/Cards";
 
 const App = () => {
   const [userText, setUserText] = useState();
+  const [cards, setCards] = useState();
+
+  const Submit = (userText) => {
+    fetch(
+      `https://api.magicthegathering.io/v1/cards?name=${userText}`
+    )
+      .then((resp) => resp.json())
+      .then((data) => {
+        setCards(data);
+      });
+  };
+  console.log(cards);
+  const sets = {};
+  if (cards) {
+    cards.cards.forEach((card) => {
+      console.log(card);
+      if (Object.keys(sets).indexOf(card.name) === -1) {
+        sets[card.name] = [card.set];
+      } else {
+        sets[card.name].push(card.set);
+      }
+    });
+  }
+  console.log(sets);
 
   return (
     <>
       <textarea
-        onChange={e => {
+        onChange={(e) => {
           setUserText(e.target.value);
         }}
-        placeholder='enter text'
+        placeholder="enter text"
       ></textarea>
       <h1>Your Magic Cards</h1>
-      <Cards searchQuery={userText} name={true} />
+      <Cards cards={cards} sets={sets} />
+      <button onClick={() => Submit(userText)}>
+        Submit
+      </button>
     </>
   );
 };
