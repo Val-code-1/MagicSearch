@@ -10,22 +10,13 @@ import SymbolReplace from "../WTF/SymbolReplace";
 
 const MagicCard = ({ cardData }) => {
   const [hinge, setHinge] = useState(false);
-  const {
-    id,
-    name,
-    type,
-    set,
-    imageUrl,
-    manaCost,
-  } = cardData;
+  const { id, name, type, set, imageUrl, manaCost } = cardData;
   // console.log(cardData);
   return (
     <Card key={id}>
       <CardContent>
         <div>
-          <Button onClick={() => setHinge(!hinge)}>
-            Press to View {name}
-          </Button>
+          <Button onClick={() => setHinge(!hinge)}>Press to View {name}</Button>
           <Collapse in={hinge}>
             <img src={imageUrl} />
           </Collapse>
