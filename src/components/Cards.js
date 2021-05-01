@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import MagicCard from "./MagicCard";
 
 const Cards = ({ cards, sets }) => {
@@ -11,11 +11,7 @@ const Cards = ({ cards, sets }) => {
             if (resultsList.indexOf(card.name) === -1) {
               resultsList.push(card.name);
               return (
-                <MagicCard
-                  cardData={card}
-                  key={i}
-                  sets={sets[card.name]}
-                />
+                <MagicCard cardData={card} key={i} sets={sets[card.name]} />
               );
             }
           })

@@ -4,21 +4,18 @@ import Cards from "./components/Cards";
 const App = () => {
   const [userText, setUserText] = useState();
   const [cards, setCards] = useState();
+  // const [sets, setSets] = useState({});
 
   const Submit = (userText) => {
-    fetch(
-      `https://api.magicthegathering.io/v1/cards?name=${userText}`
-    )
+    fetch(`https://api.magicthegathering.io/v1/cards?name=${userText}`)
       .then((resp) => resp.json())
       .then((data) => {
         setCards(data);
       });
   };
-  console.log(cards);
   const sets = {};
   if (cards) {
     cards.cards.forEach((card) => {
-      console.log(card);
       if (Object.keys(sets).indexOf(card.name) === -1) {
         sets[card.name] = [card.set];
       } else {
@@ -26,7 +23,6 @@ const App = () => {
       }
     });
   }
-  console.log(sets);
 
   return (
     <>
@@ -38,9 +34,7 @@ const App = () => {
       ></textarea>
       <h1>Your Magic Cards</h1>
       <Cards cards={cards} sets={sets} />
-      <button onClick={() => Submit(userText)}>
-        Submit
-      </button>
+      <button onClick={() => Submit(userText)}>Submit</button>
     </>
   );
 };
