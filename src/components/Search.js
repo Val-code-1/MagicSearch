@@ -27,12 +27,20 @@ const Search = () => {
 
   return (
     <>
-      <textarea
+      <input
         onChange={(e) => {
           setUserText(e.target.value);
         }}
         placeholder="enter text"
-      ></textarea>
+        autoCapitalize="words"
+        autoFocus={true}
+        onKeyPress={(e) => {
+          if (e.key === "Enter") {
+            Submit(userText);
+          }
+          console.log(e);
+        }}
+      ></input>
       <h1>Your Magic Cards</h1>
       <button onClick={() => Submit(userText)}>
         Submit

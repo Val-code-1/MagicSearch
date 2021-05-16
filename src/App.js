@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import Cards from "./components/Cards";
+import React from "react";
 import Search from "./components/Search";
 import {
   BrowserRouter as Router,

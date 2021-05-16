@@ -16,6 +16,7 @@ const Cards = ({ cards, sets }) => {
                   cardData={card}
                   key={i}
                   sets={sets[card.name]}
+                  cards={cards}
                 />
               );
             }
