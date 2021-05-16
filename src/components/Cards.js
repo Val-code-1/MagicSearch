@@ -10,8 +10,13 @@ const Cards = ({ cards, sets }) => {
           cards.cards.map((card, i) => {
             if (resultsList.indexOf(card.name) === -1) {
               resultsList.push(card.name);
+              console.log(card);
               return (
-                <MagicCard cardData={card} key={i} sets={sets[card.name]} />
+                <MagicCard
+                  cardData={card}
+                  key={i}
+                  sets={sets[card.name]}
+                />
               );
             }
           })

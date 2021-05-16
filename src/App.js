@@ -1,42 +1,53 @@
 import React, { useState, useEffect } from "react";
 import Cards from "./components/Cards";
+import Search from "./components/Search";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+} from "react-router-dom";
 
 const App = () => {
-  const [userText, setUserText] = useState();
-  const [cards, setCards] = useState();
-  // const [sets, setSets] = useState({});
-
-  const Submit = (userText) => {
-    fetch(`https://api.magicthegathering.io/v1/cards?name=${userText}`)
-      .then((resp) => resp.json())
-      .then((data) => {
-        setCards(data);
-      });
-  };
-  const sets = {};
-  if (cards) {
-    cards.cards.forEach((card) => {
-      if (Object.keys(sets).indexOf(card.name) === -1) {
-        sets[card.name] = [card.set];
-      } else {
-        sets[card.name].push(card.set);
-      }
-    });
-  }
-
   return (
-    <>
-      <textarea
-        onChange={(e) => {
-          setUserText(e.target.value);
-        }}
-        placeholder="enter text"
-      ></textarea>
-      <h1>Your Magic Cards</h1>
-      <Cards cards={cards} sets={sets} />
-      <button onClick={() => Submit(userText)}>Submit</button>
-    </>
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/Search">Search</Link>
+            </li>
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+            <li>
+              <Link to="/users">Users</Link>
+            </li>
+          </ul>
+        </nav>
+        {/* A <Switch> looks through its children <Route>s and
+            renders the first one that matches the current URL. */}
+        <Switch>
+          <Route path="/Search">
+            <Search />
+          </Route>
+          <Route path="/about">
+            <About />
+          </Route>
+          <Route path="/users">
+            <Users />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 };
 
+function About() {
+  return <h2>About</h2>;
+}
+
+function Users() {
+  return <h2>Users</h2>;
+}
 export default App;
