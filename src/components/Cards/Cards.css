@@ -1,0 +1,11 @@
+#cardsDiv {
+  border: 5px solid #773dc3;
+  margin-right: 25%;
+  /* background: #e4e4e4; */
+}
+.MuiCardContent-root {
+  background: #dcdcdc47;
+  padding-bottom: 2vw;
+}
+
+/* How do you make css not move everything around? */

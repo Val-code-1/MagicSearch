@@ -1,0 +1,11 @@
+#magicCard {
+  border: red 3px solid;
+}
+.img {
+  border: green 3px solid;
+  margin: 0vw 30%;
+}
+.button {
+  display: flex;
+  margin: 1px;
+}

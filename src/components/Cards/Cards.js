@@ -1,11 +1,12 @@
 import React from "react";
-import MagicCard from "./MagicCard";
+import MagicCard from "../MagicCard/MagicCard";
+import "./Cards.css";
 
 const Cards = ({ cards, sets }) => {
   const resultsList = [];
   if (cards) {
     return (
-      <div>
+      <div id="cardsDiv">
         {cards ? (
           cards.cards.map((card, i) => {
             if (resultsList.indexOf(card.name) === -1) {

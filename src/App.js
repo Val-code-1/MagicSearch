@@ -1,5 +1,6 @@
 import React from "react";
-import Search from "./components/Search";
+import Search from "./components/Search/Search";
+import "./App.css";
 import {
   BrowserRouter as Router,
   Switch,
@@ -11,18 +12,16 @@ const App = () => {
   return (
     <Router>
       <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/Search">Search</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/users">Users</Link>
-            </li>
-          </ul>
+        <nav id="nav">
+          <p>
+            <Link to="/Search">Search</Link>
+          </p>
+          <p>
+            <Link to="/about">About</Link>
+          </p>
+          <p>
+            <Link to="/users">Users</Link>
+          </p>
         </nav>
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}

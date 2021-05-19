@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-import Cards from "./Cards";
+import Cards from "../Cards/Cards";
+import "./Search.css";
+import Symbols from "../../assets/mtgSymbols.jpg";
 const Search = () => {
   const [userText, setUserText] = useState();
   const [cards, setCards] = useState();
@@ -27,24 +29,26 @@ const Search = () => {
 
   return (
     <>
-      <input
-        onChange={(e) => {
-          setUserText(e.target.value);
-        }}
-        placeholder="enter text"
-        autoCapitalize="words"
-        autoFocus={true}
-        onKeyPress={(e) => {
-          if (e.key === "Enter") {
-            Submit(userText);
-          }
-          console.log(e);
-        }}
-      ></input>
-      <h1>Your Magic Cards</h1>
-      <button onClick={() => Submit(userText)}>
-        Submit
-      </button>
+      <div id="searchAndButton">
+        <input
+          onChange={(e) => {
+            setUserText(e.target.value);
+          }}
+          placeholder="enter text"
+          autoCapitalize="words"
+          autoFocus={true}
+          onKeyPress={(e) => {
+            if (e.key === "Enter") {
+              Submit(userText);
+            }
+          }}
+        ></input>
+        <button onClick={() => Submit(userText)}>
+          Submit
+        </button>
+      </div>
+      <h1 id="yourCards">Your Magic Cards</h1>
+      {/* <img id="symbols" src={Symbols}></img> */}
       <Cards cards={cards} sets={sets} />
     </>
   );
