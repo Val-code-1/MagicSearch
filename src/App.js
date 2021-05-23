@@ -1,5 +1,6 @@
 import React from "react";
 import Search from "./components/Search/Search";
+import Placeholder from "./assets/placeholder.jpg";
 import "./App.css";
 import {
   BrowserRouter as Router,
@@ -34,6 +35,9 @@ const App = () => {
           </Route>
           <Route path="/users">
             <Users />
+          </Route>
+          <Route path="/">
+            <img src={Placeholder} />
           </Route>
         </Switch>
       </div>

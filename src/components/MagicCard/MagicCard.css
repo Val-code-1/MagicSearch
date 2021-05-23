@@ -4,6 +4,7 @@
 .img {
   border: green 3px solid;
   margin: 0vw 30%;
+  height: 376px;
 }
 .button {
   display: flex;

@@ -3,7 +3,6 @@ import defaultImage from "../../assets/defaultImage.png";
 import "./ImageButton.css";
 
 const ImageButton = ({ sets, cards, setImage }) => {
-  console.log(cards);
   return (
     <div id="buttons">
       {sets.map((set, i) => {
@@ -11,11 +10,11 @@ const ImageButton = ({ sets, cards, setImage }) => {
           <button
             className="imgButtons"
             onClick={() => {
-              if (!cards.cards[i].imageUrl) {
-                console.log("No image Url");
+              if (!cards[i].imageUrl) {
                 setImage(defaultImage);
+                console.log("No image Url");
               } else {
-                setImage(cards.cards[i].imageUrl);
+                setImage(cards[i].imageUrl);
               }
             }}
           >
